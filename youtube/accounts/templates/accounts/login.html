@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Sign in - Youtube Block {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+    <div class="auth-header">
+        <h1>Welcome Back</h1>
+        <p>Sign In and Be Part of Youtube Family</p>
+        <form  method="post" class="auth-form">
+            {% csrf_token %}
+
+            {% if form.erros %}
+                <ul class="error-list">
+                {% for field in form %}
+                    {% for error in field.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                {% endfor %}
+                {% for error in form.none_filed_errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <div class="forn-group">
+                <label for="id_username">Username</label>
+                <input type="text" name="username" id="id_username" class="form-input" placeholder="Enter your username" required autofocus>
+            </div>
+
+            <div class="forn-group">
+                <label for="id_password">Password</label>
+                <input type="password" name="password" id="id_password" class="form-input" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn-submit">Sign in</button>
+        </form>
+    </div>
+    <div class="auth-footer">
+        <p>Don't have an account? <a href="{% url 'youtube.accounts:register' %}">Sign Up</a></p>
+    </div>
+</div>
+{% endblock %}

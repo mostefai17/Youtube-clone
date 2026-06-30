@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Signed Out - Youtube Block {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/auth.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="success">
+    <h1>Signed Out</h1>
+    <p>You have been successfully signed out.</p>
+    <a href="{% url 'youtube.accounts:login' %}" class="btn btn-primary">Sign Again?</a>
+</div>
+{% endblock %}
