@@ -23,10 +23,10 @@
         </a>
         <ul class="navbar-nav">
             {% if user.is_authenticated %}
-                <li><a href="{% url 'videos:upload' %}" class="nav-link btn-upload">Upload</a></li>
+                <li><a href="{% url 'videos:video_upload' %}" class="nav-link btn-upload">Upload</a></li>
                 <li><span class="nav-username">{{ user.username }}</span></li>
                 <li>
-                    <form method="post" action="{% url 'accounts:logout' %}" class="logout-form">
+                    <form method="post" action="{% url 'youtube.accounts:logged_out' %}" class="logout-form">
                         {% csrf_token %}
                         <button type="submit" class="nav-link btn-outline logout-btn">Logout</button>
                     </form>
