@@ -6,12 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}YouTube Clone{% endblock %}</title>
 
-    <link rel="stylesheet" href="{% static 'css/variables.css' %}">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" href="{% static 'css/messages.css' %}">
-    <link rel="stylesheet" href="{% static 'css/buttons.css' %}">
-    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'youtube/css/variables.css' %}">
+    <link rel="stylesheet" href="{% static 'youtube/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'youtube/css/navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'youtube/css/messages.css' %}">
+    <link rel="stylesheet" href="{% static 'youtube/css/videos.css' %}">
+    <link rel="stylesheet" href="{% static 'youtube/css/upload.css' %}">
+    <link rel="stylesheet" href="{% static 'youtube/css/forms.css' %}">
+    <link rel="stylesheet" href="{% static 'youtube/css/button.css' %}">
 
     {% block extra_css %}{% endblock %}
 </head>
@@ -46,9 +48,8 @@
             </ul>
         {% endif %}
 
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
-
-    {% block extra_js %}{% endblock %}
 </body>
 </html>

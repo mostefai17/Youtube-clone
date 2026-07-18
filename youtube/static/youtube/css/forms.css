@@ -1,0 +1,121 @@
+/**
+ * Structural Form Layout
+ */
+.upload-card-wrapper {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 36px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+}
+
+.upload-card-wrapper h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-top: 0;
+    margin-bottom: 32px;
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+.form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+/* Form Fields Context styling */
+.form-control {
+    background: var(--bg-input);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color var(--transition-smooth);
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--border-focus);
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+/**
+ * Interactive File Dropzones
+ */
+.interactive-dropzone {
+    border: 2px dashed var(--border-color);
+    background: var(--bg-input);
+    border-radius: var(--radius-md);
+    padding: 32px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+}
+
+.interactive-dropzone:hover {
+    border-color: var(--accent-brand);
+    background: rgba(237, 28, 36, 0.02);
+}
+
+.interactive-dropzone p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin: 0 0 4px 0;
+}
+
+.meta-size-limit {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Clean Custom Native Input Variant */
+.file-input-native {
+    background: var(--bg-input);
+    border: 1px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 12px;
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.help-text {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 4px 0 0 0;
+    line-height: 1.4;
+}
+
+.optional-tag {
+    color: var(--text-muted);
+    font-weight: 400;
+    font-size: 0.8rem;
+    margin-left: 4px;
+}

@@ -3,8 +3,8 @@
  */
 
 .navbar {
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border-color);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, #161616 100%);
+    border-bottom: 2px solid var(--accent-red);
     padding: 0 24px;
     height: 56px;
     display: flex;
@@ -13,6 +13,7 @@
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 12px rgba(255, 0, 51, 0.1);
 }
 
 .navbar-brand {
@@ -29,12 +30,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    background: var(--accent-red);
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, var(--accent-red) 0%, #ff1a47 100%);
     color: white;
     border-radius: var(--radius-md);
-    font-size: 1rem;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(255, 0, 51, 0.3);
 }
 
 .navbar-nav {
@@ -69,23 +71,31 @@
 }
 
 .nav-link.btn-outline {
-    border: 1px solid var(--accent-red);
+    border: 2px solid var(--accent-red);
     color: var(--accent-red);
+    transition: all var(--transition-normal);
 }
 
 .nav-link.btn-outline:hover {
     background: var(--accent-red);
     color: white;
+    box-shadow: 0 4px 12px rgba(255, 0, 51, 0.3);
+    transform: translateY(-2px);
 }
 
 .btn-upload {
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border-color);
+    background: linear-gradient(135deg, var(--accent-red) 0%, #ff1a47 100%);
+    border: none;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(255, 0, 51, 0.3);
 }
 
 .btn-upload:hover {
-    background: var(--border-color);
-    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--accent-red-hover) 0%, #e60a37 100%);
+    color: white;
+    box-shadow: 0 6px 18px rgba(255, 0, 51, 0.4);
+    transform: translateY(-2px);
 }
 
 .logout-form {
