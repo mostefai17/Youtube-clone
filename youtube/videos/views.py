@@ -15,7 +15,7 @@ def video_upload(request):
     form = VideoForm(request.POST, request.FILES)
     if form.is_valid():
         video_file = form.cleaned_data['video_file']
-        custom_thumbnail = request.POST.get('thumbnail_data', '')
+        custom_thumbnail = request.POST.get('thumbnail_url', '')
 
         try:
             # Fixed keyword argument typo: file_Data -> file_data
@@ -34,6 +34,7 @@ def video_upload(request):
                     )
                     thumbnail_url = thumb_result['url']
                 except Exception as e:
+                    print(f"Error while loading thumbnail: {e}")
                     pass
 
             video = Video.objects.create(
@@ -51,13 +52,14 @@ def video_upload(request):
                 'message': 'Video uploaded successfully'
             })
         except Exception as e:
-            return JsonResponse({'success': False, 'message': 'Failed to upload video'})
+            return JsonResponse({'success': False, 'error': f"ImageKit Upload error: {str(e)}"}, status=500)
 
     errors = []
     for field, field_errors in form.errors.items():
         for error in field_errors:
             errors.append(f"{field}: {error}" if field != '__all__' else error)
-    return JsonResponse({'success': False, 'errors': ";".join(errors)})
+
+    return JsonResponse({'success': False, 'error': "; ".join(errors)}, status=400)
 
 @login_required
 def video_upload_page(request):

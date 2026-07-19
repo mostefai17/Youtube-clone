@@ -22,10 +22,11 @@
     <div class="upload-container">
         <div class="upload-card">
             <h1>Upload video</h1>
-            <form  method="post" enctype="multipart/form-data" class="upload-form" id="uploadForm">
+            <form action="{% url 'videos:upload_submit' %}" method="post" enctype="multipart/form-data" class="upload-form" id="uploadForm">
                 {% csrf_token %}
                 <div id="errorContainer">
-                    {% if form.error %}
+                <!-- FIXED: Changed form.error to form.errors -->
+                    {% if form.errors %}
                         <ul class="error-list">
                             {% for field in form %}
                                 {% for error in field.errors %}
@@ -65,7 +66,8 @@
                     <span class="help-text">Leave it blank to generate random pic from your video</span>
                 </div>
 
-                <button type="submit" class="btn-submit" id="submitBtn">Upload Video</button>
+{#                <button type="submit" class="btn-submit" id="submitBtn">Upload Video</button>#}
+                <button type="submit" class="btn-upload-primary" id="submitBtn">Upload Video Asset</button>
             </form>
         </div>
     </div>
@@ -100,7 +102,7 @@ $("uploadForm").onsubmit = async e => {
 
     $("uploadOverlay").classList.add("active")
     $("submitBtn").disabled = true;
-    $('errorContainer').innerHtml = ""
+    $('errorContainer').innerHTML = ""
     window.onbeforeunload = () => "Upload in progress"
 
     try {
@@ -112,7 +114,7 @@ $("uploadForm").onsubmit = async e => {
         window.onbeforeunload = null;
 
         if (data.success) {
-            $('uploadStatus').textContent = "Upload complete!"
+            $("uploadStatus").textContent = "Upload complete!" // FIXED: Now targets id="uploadStatus" correctly
             setTimeout(() => location.href = '{% url "videos:video_upload" %}', 2000) //changing later to list
         } else {
             throw new Error(data.error)

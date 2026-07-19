@@ -1,22 +1,22 @@
 /**
  * Corporate Interactive Buttons
  */
+/* Apply this to your primary upload action button */
 .btn-upload-primary {
-    background: var(--accent-brand);
-    color: #ffffff;
-    font-weight: 600;
-    font-size: 0.95rem;
-    padding: 14px 28px;
-    border: none;
-    border-radius: var(--radius-md);
-    cursor: pointer;
-    width: 100%;
-    transition: all var(--transition-smooth);
-    box-shadow: 0 4px 14px var(--accent-brand-glow);
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    background: var(--accent-brand, #ed1c24) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    font-size: 0.95rem !important;
+    padding: 14px 28px !important;
+    border: none !important;
+    border-radius: var(--radius-md, 10px) !important;
+    cursor: pointer !important;
+    width: 100% !important;
+    height: auto !important; /* Prevents shrinking */
+    display: block !important;
+    box-shadow: 0 4px 14px var(--accent-brand-glow) !important;
 }
+
 
 .btn-upload-primary:hover {
     background: var(--accent-brand-hover);

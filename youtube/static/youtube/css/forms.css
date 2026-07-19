@@ -37,16 +37,17 @@
 
 /* Form Fields Context styling */
 .form-control {
-    background: var(--bg-input);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 14px 16px;
-    color: var(--text-primary);
-    font-size: 0.95rem;
-    width: 100%;
-    box-sizing: border-box;
-    transition: border-color var(--transition-smooth);
+    background-color: var(--bg-input, #161f33) !important;
+    border: 1px solid var(--border-color, #293854) !important;
+    border-radius: var(--radius-md, 10px) !important;
+    padding: 14px 16px !important;
+    color: var(--text-primary, #ffffff) !important;
+    font-size: 0.95rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    height: auto !important; /* Forces it to stop shrinking */
 }
+
 
 .form-control:focus {
     outline: none;
