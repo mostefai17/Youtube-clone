@@ -1,1 +1,85 @@
-{{% %}}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ video.title }}{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'youtube/css/videos.css' %}">
+    <link rel="stylesheet" href="{% static 'youtube/css/videoplayer.css' %}">
+{% endblock %}
+
+{% block content %}
+
+        <div class="video-player-container">
+            <div class="video-player">
+                <video id="video-player" controls preload="none" poster="{{ video.display_thumbnail_url }}"></video>
+                <div id="video-error" class="video-error" style="display: none;">
+                    <span class="error-icon">❌</span>
+                    <p>An error occurred while loading the video.</p>
+                    <small>The video file could not be loaded</small>
+                </div>
+            </div>
+            <div class="video-details">
+                <h1>{{ video.title }}</h1>
+                <div class="video-stats">
+                    <span class="video-status-left">{{ video.views }} views | {{ video.created_at|date:"M d, Y" }}</span>
+                    <div class="video-action">
+                        <button class="vote-btn" data-vote="like" onclick="vote({{ vote.id }},'like')">👍
+                        <span id="like-count">{{ video.likes }}</span>
+                        </button>
+                        <button class="vote-btn" data-vote="dislike" onclick="vote({{ vote.id }},'dislike')">👎
+                        <span id="dislike-count">{{ video.dislikes }}</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="video-channel">
+                    <div class="channel-avatar">
+                        {{ video.user.username | slice:":1" }}
+                        <a href="{% url 'videos:video_channel' video.user.username %}" class="channel-name">{{ video.user.username }}</a>
+                    </div>
+                </div>
+                {% if video.description %}
+                    <p class="video-description">{{ video.description }}</p>
+                {% endif %}
+                {% if request.user == video.user %}
+                    <div class="video-owner-actions">
+                        <button class="delete-btn" type="button" onclick="() => {}">Delete</button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+{% endblock %}
+
+{% block extra_js %}
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script>
+        const videoPlayer = document.getElementById('video-player');
+        const videoError = document.getElementById('video-error');
+        const streamingUrl = "{{ video.streaming_url }}"
+        const fallbackUrl = "{{ video.optimized_video_url }}"
+
+        if (Hls.isSupported()) {
+            const hls = new Hls({
+                startLevel: -1,
+                capLevelToPlayerSize: true,
+            })
+            hls.loadSource(streamingUrl);
+            hls.attachMedia(videoPlayer);
+            hls.on(Hls.Events.ERROR, (event, data) => {
+                if (data.fatal) {
+                    videoPlayer.src = fallbackUrl;
+                }
+            })
+        }
+        else if (videoPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+            videoPlayer.src = streamingUrl;
+        }
+        else {videoPlayer.src = fallbackUrl;}
+        videoPlayer.addEventListener('error', () => {
+        videoPlayer.style.display = 'none';
+        videoError.style.display = 'flex';
+
+    })
+    </script>
+{% endblock %}

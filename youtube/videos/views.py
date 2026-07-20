@@ -14,6 +14,11 @@ def video_list(request):
     videos = Video.objects.all()
     return render(request, "videos/list.html", {"videos": videos})
 
+def channel_view(request, username):
+    videos = Video.objects.filter(user__username=username)
+    return render(request, "videos/channel.html", {"videos": videos, "channel_name": username})
+
+
 
 # Writing Detail view
 def video_detail(request, video_id):

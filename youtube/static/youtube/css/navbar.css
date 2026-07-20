@@ -3,7 +3,7 @@
  */
 
 .navbar {
-    background: linear-gradient(180deg, var(--bg-secondary) 0%, #161616 100%);
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-main) 100%);
     border-bottom: 2px solid var(--accent-red);
     padding: 0 24px;
     height: 56px;

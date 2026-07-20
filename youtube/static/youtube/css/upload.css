@@ -1,27 +1,4 @@
 /**
- * Global Design Tokens for Corporate Tech (Ooredoo / Yassir Standards)
- */
-:root {
-    /* Brand Accent: Adaptable to Ooredoo Red (#ed1c24) or Yassir Green (#00ca99) */
-    --accent-brand: #ed1c24;
-    --accent-brand-glow: rgba(237, 28, 36, 0.15);
-
-    /* Neutral Dark Palette (Premium Dark Mode, not pure pitch black) */
-    --bg-main: #0b0f19;
-    --bg-card: #151d30;
-    --bg-input: #1e2942;
-    --border-subtle: #2a395c;
-
-    /* Typography Typography colors */
-    --text-main: #ffffff;
-    --text-muted: #8fa0c4;
-
-    /* Animations & Curves */
-    --radius-premium: 14px;
-    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/**
  * Upload Page - Main Dropzone & Form Elements
  */
 .upload-container {
