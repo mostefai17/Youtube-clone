@@ -7,6 +7,19 @@ from .models import Video
 from .forms import VideoForm
 from .imagekit_client import upload_video, upload_thumbnail
 
+
+# Displaying video lists
+def video_list(request):
+
+    videos = Video.objects.all()
+    return render(request, "videos/list.html", {"videos": videos})
+
+
+# Writing Detail view
+def video_detail(request, video_id):
+    video = get_object_or_404(Video.objects.select_related('user'), id=video_id)
+    return render(request, "videos/detail.html", {"video": video})
+
 # Fixed decorators: Removed parentheses to prevent TypeErrors
 @login_required
 @require_POST

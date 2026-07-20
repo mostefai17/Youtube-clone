@@ -22,11 +22,17 @@ def upload_video(file_data: bytes,file_name: str, folder: str = "videos") -> dic
         folder=folder,
     )
 
-
     return {
         "file_id": response.file_id,
         "url": response.url,
     }
+
+def get_optimized_video_url(base_url:str) -> str:
+    if "?" in base_url:
+        return f"{base_url}&tr=q-80,f-auto" # using imagekit quality parameter to optimize videos
+    return f"{base_url}?tr=q-80,f-auto" # read the documentation for more transformations: https://docs.imagekit.io/features/video-transformations
+
+
 
 
 def upload_thumbnail(file_data: str, file_name: str, folder: str = "thumbnails") -> dict:
