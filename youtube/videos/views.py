@@ -5,7 +5,7 @@ from django.views.decorators.http import require_POST
 
 from .models import Video
 from .forms import VideoForm
-from .imagekit_client import upload_video, upload_thumbnail
+from .imagekit_client import upload_video, upload_thumbnail, delete_video as imagekit_delete_video
 
 
 # Displaying video lists
@@ -23,6 +23,8 @@ def channel_view(request, username):
 # Writing Detail view
 def video_detail(request, video_id):
     video = get_object_or_404(Video.objects.select_related('user'), id=video_id)
+    video.views += 1
+    video.save(update_fields=['views'])
     return render(request, "videos/detail.html", {"video": video})
 
 # Fixed decorators: Removed parentheses to prevent TypeErrors
@@ -83,3 +85,21 @@ def video_upload(request):
 def video_upload_page(request):
     # Fixed dictionary syntax: Added quotes around the "form" key
     return render(request, "videos/upload.html", {"form": VideoForm()})
+
+
+#writing view function to delete videos
+@login_required
+@require_POST
+
+def delete_video(request, video_id):
+    video = get_object_or_404(Video, pk=video_id, user=request.user)
+
+    try:
+        imagekit_delete_video(video.file_id)
+
+    except Exception as e:
+        print(e)
+
+    video.delete()
+
+    return JsonResponse({'success': True, 'message': 'Video deleted successfully'})

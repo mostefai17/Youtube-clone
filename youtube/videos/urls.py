@@ -7,5 +7,6 @@ urlpatterns = [
     path('upload/', views.video_upload_page, name='video_upload'), # GET - show form
     path('upload/submit/', views.video_upload, name='upload_submit'), # POST - handle submission
     path('<int:video_id>/', views.video_detail, name='video_detail'),
-    path("channel/<str:username>/", views.channel_view, name="video_channel")
+    path("channel/<str:username>/", views.channel_view, name="video_channel"),
+    path("<int:video_id>/delete/", views.delete_video, name="delete_video"),
 ]

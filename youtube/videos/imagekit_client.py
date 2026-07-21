@@ -2,6 +2,8 @@ import os
 from imagekitio import ImageKit
 from django.conf import settings
 from imagekitio import ImageKit
+import base64
+import io
 
 
 def get_imagekit_client():
@@ -12,8 +14,7 @@ def get_imagekit_client():
     return ImageKit()
 
 def upload_video(file_data: bytes,file_name: str, folder: str = "videos") -> dict:
-    public_key = os.environ.get("IMAGEKIT_PUBLIC_KEY")
-
+    # public_key = os.environ.get("IMAGEKIT_PUBLIC_KEY")
     client = get_imagekit_client()
 
     response = client.files.upload(
@@ -41,22 +42,22 @@ def get_thumbnail_url(base_url:str, width : int= 480, height : int = 270) -> str
 
 
 def upload_thumbnail(file_data: str, file_name: str, folder: str = "thumbnails") -> dict:
-    import base64
+    client = get_imagekit_client()
 
     # public_key = os.environ.get("IMAGEKIT_PUBLIC_KEY")
-
     # Fixed typo (file_Date -> file_data) and added string validation
 
     if isinstance(file_data, str) and file_data.startswith("data:"):
-        base64_data = file_data.split(",", 1)[1]
-        image_bytes = base64.b64decode(base64_data)
+        base64_payload = file_data.split(",")[1]
+        thumbnail_bytes = base64.b64decode(base64_payload)
     else:
-        image_bytes = file_data
+        thumbnail_bytes = base64.b64decode(file_data)
 
-    client = get_imagekit_client()
+    # Wrap raw bytes in a BytesIO stream object so the SDK accepts it seamlessly
+    file_stream = io.BytesIO(thumbnail_bytes)
 
     response = client.files.upload(
-        file=image_bytes,
+        file=file_stream,
         file_name=file_name,
         folder=folder,
     )
@@ -66,3 +67,9 @@ def upload_thumbnail(file_data: str, file_name: str, folder: str = "thumbnails")
         "url": response.url,
     }
 
+# adding deleting file option
+
+def delete_video(file_id: str) -> bool:
+    client = get_imagekit_client()
+    client.files.delete(file_id)
+    return True
