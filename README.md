@@ -1,21 +1,178 @@
-Django YouTube Clone
+# YouTube Clone
 
-This project is a comprehensive video-sharing application built using Python and Django. It provides a robust foundation for building modern media-rich web applications with secure authentication and high-performance asset management.
-Project Overview
+A full-stack video sharing platform built with Django that demonstrates user authentication, cloud media storage, adaptive video streaming, and REST API integration.
 
-This application serves as a functional YouTube clone, covering the full lifecycle of video content—from user registration and video uploads to playback and engagement metrics. It utilizes external media APIs to ensure high performance and scalability for video streaming and image processing.
-Core Features
+---
 
-    User Authentication: A custom authentication system for secure user registration, sign-in, and account management.
-    Video Management: Seamless uploading of video files and custom thumbnails, with built-in validation for file types.
-    AI-Powered Media Processing: Integration with ImageKit for automatic video optimization, efficient streaming, and dynamic thumbnail generation.
-    Engagement Tracking: Built-in functionality for users to like or dislike content and view real-time engagement metrics.
-    Dynamic Channel Pages: Dedicated user dashboards to display and manage personal video uploads.
-    Responsive UI: A clean, modern interface styled with custom CSS to provide a familiar viewing experience.
+## Features
 
-Technical Stack
+- User registration and authentication
+- Video upload
+- Adaptive HLS video streaming
+- ImageKit cloud storage integration
+- Like and dislike system
+- Dynamic user channels
+- View counter
+- Responsive interface
+- REST API documentation with DRF Spectacular
 
-    Backend: Django (Python)
-    Media API: ImageKit (for video optimization, storage, and transformation)
-    Environment Management: UV for dependency management and virtual environments
-    Frontend: Custom CSS and HTML templates with Django templating engines
+---
+
+## Tech Stack
+
+| Category | Technology |
+|----------|------------|
+| Backend | Django 6 |
+| Language | Python 3.12 |
+| Database | SQLite |
+| Storage | ImageKit |
+| API | Django REST Framework |
+| Documentation | DRF Spectacular |
+| Dependency Manager | uv |
+| Containerization | Docker & Docker Compose |
+
+---
+
+## Architecture
+
+```
+Browser
+     │
+     ▼
+ Django Views
+     │
+ ┌── Authentication
+ ├── Video Upload
+ ├── Streaming
+ ├── Likes
+ └── Channels
+     │
+     ▼
+SQLite Database
+     │
+     ▼
+ImageKit Cloud Storage
+```
+
+---
+
+## Getting Started
+
+### Clone
+
+```bash
+git clone https://github.com/USERNAME/Youtube-clone.git
+
+cd Youtube-clone
+```
+
+### Configure Environment
+
+```bash
+cp .env.example .env
+```
+
+Fill in your ImageKit credentials and Django secret key.
+
+### Run with Docker
+
+```bash
+docker compose up --build
+```
+
+Application:
+
+```
+http://localhost:8080
+```
+
+---
+
+## Development
+
+Without Docker
+
+```bash
+uv sync
+
+uv run python manage.py migrate
+
+uv run python manage.py runserver
+```
+
+---
+
+## Environment Variables
+
+```
+SECRET_KEY=
+DEBUG=True
+ALLOWED_HOSTS=127.0.0.1,localhost
+
+IMAGEKIT_PUBLIC_KEY=
+IMAGEKIT_PRIVATE_KEY=
+IMAGEKIT_URL_ENDPOINT=
+```
+
+---
+
+## Project Structure
+
+```
+Youtube-clone/
+
+├── youtube/
+│   ├── accounts/
+│   ├── videos/
+│   ├── static/
+│   └── templates/
+│
+├── youtube_clone/
+│   ├── settings.py
+│   └── urls.py
+│
+├── Dockerfile
+├── docker-compose.yml
+├── pyproject.toml
+└── README.md
+```
+
+---
+
+## Roadmap
+
+- [x] Authentication
+- [x] Video Upload
+- [x] ImageKit Integration
+- [x] Adaptive Streaming
+- [x] Docker Support
+- [ ] Pagination
+- [ ] Search
+- [ ] Unit Tests
+- [ ] GitHub Actions CI
+- [ ] PostgreSQL Support
+
+---
+
+## Screenshots
+
+> Add screenshots of:
+
+- Home Page
+- Upload Page
+- Video Detail
+- User Channel
+
+---
+
+## License
+
+MIT
+
+---
+
+## Author
+
+Mohamed Ilias Mostefai
+
+Python Web Developer
