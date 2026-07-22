@@ -12,10 +12,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from pathlib import Path
 from dotenv import load_dotenv
+import os
 
-load_dotenv()
-
-from django.template.context_processors import static
+BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,12 +25,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-oyx312mcgkhp-zemdautr+!mygp=_snip9%ha$=1!!t47c-ip0'
-
+SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "True") == "True"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "").split(",")
 
 
 # Application definition
@@ -122,7 +121,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
-import os
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -142,9 +140,9 @@ REST_FRAMEWORK = {
 # ==============================================================================
 # IMAGEKIT.IO STORAGE CONFIGURATION
 # ==============================================================================
-IMAGEKIT_PUBLIC_KEY = 'public_46DBW14BVGJYRhePuhuNZu8UM1w='
-IMAGEKIT_PRIVATE_KEY = 'private_7e9hz/V63YakIUWOKeoQKeRBbYs='
-IMAGEKIT_URL_ENDPOINT = 'https://imagekit.io'
+IMAGEKIT_PUBLIC_KEY = os.getenv('IMAGEKIT_PUBLIC_KEY')
+IMAGEKIT_PRIVATE_KEY = os.getenv('IMAGEKIT_PRIVATE_KEY')
+IMAGEKIT_URL_ENDPOINT = os.getenv('IMAGEKIT_URL_ENDPOINT')
 
 # For Django 4.2 and newer (Standard setup)
 STORAGES = {

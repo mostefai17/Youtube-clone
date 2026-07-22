@@ -1,0 +1,21 @@
+services:
+  web:
+    environment:
+      UV_LINK_MODE: copy
+    build: .
+    container_name: youtube-clone
+
+    ports:
+      - "8080:8080"
+
+    env_file:
+      - .env
+
+    volumes:
+      - .:/app
+
+    command: >
+      sh -c "
+      uv run python manage.py migrate &&
+      uv run python manage.py runserver 0.0.0.0:8080
+      "
