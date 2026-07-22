@@ -9,4 +9,5 @@ urlpatterns = [
     path('<int:video_id>/', views.video_detail, name='video_detail'),
     path("channel/<str:username>/", views.channel_view, name="video_channel"),
     path("<int:video_id>/delete/", views.delete_video, name="delete_video"),
+    path("<int:video_id>/vote/", views.video_vote, name="vote")
 ]

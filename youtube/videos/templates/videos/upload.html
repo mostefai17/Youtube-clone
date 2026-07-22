@@ -114,7 +114,7 @@ $("uploadForm").onsubmit = async e => {
         window.onbeforeunload = null;
 
         if (data.success) {
-            $("uploadStatus").textContent = "Upload complete!" // FIXED: Now targets id="uploadStatus" correctly
+            $("uploadOverlay").classList.add("success")
             setTimeout(() => location.href = '{% url "videos:video_list" %}', 2000) //changing later to list
         } else {
             throw new Error(data.error)

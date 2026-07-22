@@ -135,7 +135,7 @@
     display: none !important;
     max-width: 200px !important;
     max-height: 112px !important; /* Perfect 16:9 ratio landscape preset */
-    width: auto;
+    width: 100%;
     height: auto;
     border-radius: 8px;
     object-fit: cover;

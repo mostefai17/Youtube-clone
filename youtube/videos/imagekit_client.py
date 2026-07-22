@@ -34,7 +34,7 @@ def get_optimized_video_url(base_url:str) -> str:
     return f"{base_url}?tr=q-80,f-auto" # read the documentation for more transformations: https://docs.imagekit.io/features/video-transformations
 
 def get_streaming_video_url(base_url:str) -> str:
-    return f"{base_url}/ik-master.m3u8?tr=sr-480_720_1080"
+    return f"{base_url}?ik-master.m3u8"
 
 def get_thumbnail_url(base_url:str, width : int= 480, height : int = 270) -> str:
     return f"{base_url}/ik-thumbnail.jpg"
