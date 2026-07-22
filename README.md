@@ -158,11 +158,11 @@ Youtube-clone/
 
 > Add screenshots of:
 
-- Home Page
-- Upload Page
-- Video Detail
-- User Channel
-
+![channel.png](../../Pictures/Screenshots/channel.png)
+![create-account.png](../../Pictures/Screenshots/create-account.png)
+ ![sign-in.png](../../Pictures/Screenshots/sign-in.png)
+![layout.png](../../Pictures/Screenshots/layout.png)
+![upload.png](../../Pictures/Screenshots/upload.png)
 ---
 
 ## License
