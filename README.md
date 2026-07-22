@@ -157,12 +157,12 @@ Youtube-clone/
 ## Screenshots
 
 > Add screenshots of:
+> ![upload.png](../../Pictures/Screenshots/upload.png)
+> ![layout.png](../../Pictures/Screenshots/layout.png)
+> ![channel.png](../../Pictures/Screenshots/channel.png)
+> ![create-account.png](../../Pictures/Screenshots/create-account.png)
+> ![sign-in.png](../../Pictures/Screenshots/sign-in.png)
 
-![channel.png](../../Pictures/Screenshots/channel.png)
-![create-account.png](../../Pictures/Screenshots/create-account.png)
- ![sign-in.png](../../Pictures/Screenshots/sign-in.png)
-![layout.png](../../Pictures/Screenshots/layout.png)
-![upload.png](../../Pictures/Screenshots/upload.png)
 ---
 
 ## License
