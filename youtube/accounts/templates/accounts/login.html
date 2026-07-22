@@ -15,24 +15,24 @@
         <form  method="post" class="auth-form">
             {% csrf_token %}
 
-            {% if form.erros %}
+            {% if form.errors %}
                 <ul class="error-list">
                 {% for field in form %}
                     {% for error in field.errors %}
                         <li>{{ error }}</li>
                     {% endfor %}
                 {% endfor %}
-                {% for error in form.none_filed_errors %}
+                {% for error in form.non_field_errors %}
                     <li>{{ error }}</li>
                 {% endfor %}
                 </ul>
             {% endif %}
-            <div class="forn-group">
+            <div class="form-group">
                 <label for="id_username">Username</label>
                 <input type="text" name="username" id="id_username" class="form-input" placeholder="Enter your username" required autofocus>
             </div>
 
-            <div class="forn-group">
+            <div class="form-group">
                 <label for="id_password">Password</label>
                 <input type="password" name="password" id="id_password" class="form-input" placeholder="Enter your password" required>
             </div>

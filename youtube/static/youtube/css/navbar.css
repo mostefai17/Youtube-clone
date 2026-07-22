@@ -109,9 +109,40 @@
     font-size: inherit;
 }
 
+.brand-text {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+}
+
+.brand-clone {
+    color: var(--accent-red, #ed1c24);
+    font-weight: 800;
+}
+
+.navbar-brand:hover .brand-icon {
+    transform: scale(1.1);
+    box-shadow: 0 6px 18px rgba(255, 0, 51, 0.45);
+}
+
+.navbar-brand:hover .brand-clone {
+    text-shadow: 0 0 12px rgba(237, 28, 36, 0.6);
+}
+
 .nav-username {
     color: var(--text-secondary);
     font-weight: 500;
     font-size: 0.9rem;
     padding: 8px 12px;
+}
+
+.nav-username-link {
+    text-decoration: none;
+    border-radius: var(--radius-full);
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nav-username-link:hover {
+    color: var(--text-primary);
+    background: var(--bg-tertiary);
 }

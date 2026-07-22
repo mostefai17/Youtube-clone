@@ -30,9 +30,42 @@
 
 .form-group label {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* Modern styled inputs — used across upload, auth, and other forms */
+.form-input {
+    background: var(--bg-input, #0d1526);
+    border: 1.5px solid var(--border-color, #293854);
+    border-radius: var(--radius-md, 10px);
+    padding: 14px 16px;
+    color: var(--text-primary, #ffffff);
+    font-size: 0.95rem;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    outline: none;
+    font-family: inherit;
+}
+
+.form-input:focus {
+    border-color: var(--accent-red, #ed1c24);
+    box-shadow: 0 0 0 3px rgba(237, 28, 36, 0.15);
+    background: var(--bg-secondary, #111827);
+}
+
+.form-input::placeholder {
+    color: var(--text-muted, #4a5568);
+    font-size: 0.9rem;
+}
+
+textarea.form-input {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.6;
 }
 
 /* Form Fields Context styling */

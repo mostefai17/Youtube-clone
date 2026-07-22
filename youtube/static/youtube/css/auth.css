@@ -47,6 +47,37 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    text-align: left;
+}
+
+/* .form-input styles are defined globally in forms.css */
+
+/* Auth submit button */
+.auth-form .btn-submit {
+    margin-top: 8px;
+    padding: 14px 28px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    border-radius: var(--radius-md, 10px);
+    background: linear-gradient(135deg, var(--accent-red, #ed1c24) 0%, #ff1a47 100%);
+    color: #fff;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    box-shadow: 0 4px 18px rgba(237, 28, 36, 0.35);
+    transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+}
+
+.auth-form .btn-submit:hover {
+    background: linear-gradient(135deg, #c8151c 0%, #e60a37 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(237, 28, 36, 0.45);
+}
+
+.auth-form .btn-submit:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(237, 28, 36, 0.3);
 }
 
 .auth-footer {
