@@ -11,7 +11,7 @@ from .forms import CustomUserCreationForm
 
 class RegisterView(CreateView):
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('youtube.accounts:login')
+    success_url = '/'
     template_name = 'accounts/register.html'
 
     def dispatch(self, request, *args, **kwargs):
