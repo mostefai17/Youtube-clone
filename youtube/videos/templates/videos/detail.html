@@ -117,8 +117,8 @@
             })
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById("like-count").textContent = data.likes_count;
-                    document.getElementById("dislike-count").textContent = data.dislikes_count;
+                    document.getElementById("like-count").textContent = data.likes;
+                    document.getElementById("dislike-count").textContent = data.dislikes;
                     document.querySelectorAll('.vote-btn').forEach(btn => btn.classList.remove('active'));
                     if (data.user_vote === 1) document.querySelector('[data-vote="like"]').classList.add("active")
                     else if (data.user_vote === -1) document.querySelector('[data-vote="dislike"]').classList.add("active")
